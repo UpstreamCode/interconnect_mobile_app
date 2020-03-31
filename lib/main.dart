@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:interconnect_mobile_app/destination.dart';
+import 'package:interconnect_mobile_app/home_page.dart';
+import 'package:interconnect_mobile_app/meetups_page.dart';
+import 'package:interconnect_mobile_app/profile_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -46,16 +50,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-    ),
-    Text(
-      'Meetups',
-    ),
-    Text(
-      'Profile',
-    ),
+  static const List<Destination> _pageOptions = <Destination>[
+    Destination(0, 'Home', Icons.home, Colors.brown, HomePage()),
+    Destination(1, 'Meetups', Icons.people, Colors.cyan, MeetupsPage()),
+    Destination(2, 'Me', Icons.person, Colors.orange, ProfilePage()),
   ];
 
   void _onItemTapped(int index) {
@@ -68,26 +66,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: _widgetOptions[_selectedIndex],
+        title: Text(_pageOptions[_selectedIndex].title),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _pageOptions.elementAt(_selectedIndex).page,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people),
-            title: Text('Meetups'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Profile'),
-          ),
-        ],
+        items: _pageOptions.map((Destination destination){
+          return BottomNavigationBarItem(
+              icon: Icon(destination.icon),
+              title: Text(destination.title)
+          );
+          }
+        ).toList(),
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
