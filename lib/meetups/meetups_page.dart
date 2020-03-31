@@ -19,10 +19,10 @@ class MeetupsPage extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     // push next page
-                    // Navigator.pushNamed(context, "/text");
+                     Navigator.pushNamed(context, "/chat");
                   },
                   child: Center(
-                    child: Text('Item $index'),
+                    child: Text('Group $index'),
                   ),
                 ),
               ),

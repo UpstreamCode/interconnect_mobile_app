@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/destination.dart';
-import 'package:interconnect_mobile_app/home_page.dart';
-import 'package:interconnect_mobile_app/meetups_page.dart';
-import 'package:interconnect_mobile_app/profile_page.dart';
+import 'package:interconnect_mobile_app/home/home_page.dart';
+import 'package:interconnect_mobile_app/meetups/chat_page.dart';
+import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
+import 'package:interconnect_mobile_app/profile/profile_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Interconnect App',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -24,13 +25,17 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.brown,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MainPage(),
+        '/chat': (context) => ChatPage(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MainPage extends StatefulWidget {
+  MainPage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -44,10 +49,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   static const List<Destination> _pageOptions = <Destination>[
