@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:interconnect_mobile_app/meetups/chat_args.dart';
 
 class ChatPage extends StatelessWidget {
+  static const routeName = '/chat';
+
   @override
   Widget build(BuildContext context) {
+
+    // Extract the arguments from the current ModalRoute settings and cast
+    // them as ScreenArguments.
+    final ChatArgs args = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details Screen"),
+        title: Text(args.name),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            // Navigate back to first screen when tapped.
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
-        ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(args.message),
+          )
+        ]
       ),
     );
   }

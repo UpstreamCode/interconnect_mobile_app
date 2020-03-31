@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MainPage(),
-        '/chat': (context) => ChatPage(),
+        ChatPage.routeName: (context) => ChatPage(),
       },
     );
   }
