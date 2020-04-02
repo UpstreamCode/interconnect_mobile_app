@@ -1,7 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class ThemeColors {
-  static const backgroundColor = Colors.white;
+  static const backgroundColor = Colors.lightBlueAccent;
 }
