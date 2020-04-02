@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/components/custom_button.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 
-import 'login_screen.dart';
-import 'registration_screen.dart';
+import 'login_page.dart';
+import 'registration_page.dart';
 
-class WelcomeScreen extends StatefulWidget {
+class WelcomePage extends StatefulWidget {
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _WelcomePageState createState() => _WelcomePageState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen>
+class _WelcomePageState extends State<WelcomePage>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation animation;
@@ -71,14 +71,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               label: 'Login',
               color: Colors.yellow,
               action: () {
-                Navigator.pushNamed(context, LoginScreen.routeName);
+                Navigator.pushNamed(context, LoginPage.routeName);
               },
             ),
             CustomButton(
               label: 'Register',
               color: Colors.yellow,
               action: () {
-                Navigator.pushNamed(context, RegistrationScreen.routeName);
+                Navigator.pushNamed(context, RegistrationPage.routeName);
               },
             ),
           ],

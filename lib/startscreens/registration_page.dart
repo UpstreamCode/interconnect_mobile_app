@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/components/custom_button.dart';
 import 'package:interconnect_mobile_app/components/custom_input.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
-import 'package:interconnect_mobile_app/main.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const routeName = "/login";
+import 'main_page.dart';
+
+class RegistrationPage extends StatefulWidget {
+  static const routeName = "/registration";
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegistrationPageState createState() => _RegistrationPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationPageState extends State<RegistrationPage> {
   final _auth = FirebaseAuth.instance;
-
   String email;
   String password;
 
@@ -34,12 +34,9 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Flexible(
-                child: Hero(
-                  tag: 'logo',
-                  child: Container(
-                    height: 200.0,
-                    child: Image.asset('images/logo.png'),
-                  ),
+                child: Container(
+                  height: 200.0,
+                  child: Image.asset('images/logo.png'),
                 ),
               ),
               SizedBox(
@@ -55,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 8.0,
               ),
               CustomInputField(
-                'Enter your password.',
+                'Enter your password',
                 (value) {
                   password = value;
                 },
@@ -66,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: CustomButton(
-                  label: 'Log In',
+                  label: 'Register',
                   color: Colors.yellow,
                   action: () async {
                     setState(() {
@@ -74,9 +71,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
 
                     try {
-                      final result = await _auth.signInWithEmailAndPassword(
+                      final user = await _auth.createUserWithEmailAndPassword(
                           email: email, password: password);
-                      if (result != null) {
+                      if (user != null) {
                         Navigator.pushNamed(context, MainPage.routeName);
                       }
                     } catch (e) {

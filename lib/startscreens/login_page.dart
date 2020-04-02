@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/components/custom_button.dart';
 import 'package:interconnect_mobile_app/components/custom_input.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
-import 'package:interconnect_mobile_app/main.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-class RegistrationScreen extends StatefulWidget {
-  static const routeName = "/registration";
+import 'main_page.dart';
+
+class LoginPage extends StatefulWidget {
+  static const routeName = "/login";
 
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
+class _LoginPageState extends State<LoginPage> {
   final _auth = FirebaseAuth.instance;
+
   String email;
   String password;
 
@@ -33,9 +35,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Flexible(
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('images/logo.png'),
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('images/logo.png'),
+                  ),
                 ),
               ),
               SizedBox(
@@ -51,7 +56,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 8.0,
               ),
               CustomInputField(
-                'Enter your password',
+                'Enter your password.',
                 (value) {
                   password = value;
                 },
@@ -62,7 +67,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: CustomButton(
-                  label: 'Register',
+                  label: 'Log In',
                   color: Colors.yellow,
                   action: () async {
                     setState(() {
@@ -70,9 +75,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     });
 
                     try {
-                      final user = await _auth.createUserWithEmailAndPassword(
+                      final result = await _auth.signInWithEmailAndPassword(
                           email: email, password: password);
-                      if (user != null) {
+                      if (result != null) {
                         Navigator.pushNamed(context, MainPage.routeName);
                       }
                     } catch (e) {
