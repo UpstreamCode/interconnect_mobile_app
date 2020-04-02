@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => WelcomeScreen(),
         ChatPage.routeName: (context) => ChatPage(),
         LoginScreen.routeName: (context) => LoginScreen(),
+        MainPage.routeName: (context) => MainPage(),
         RegistrationScreen.routeName: (context) => RegistrationScreen(),
       },
     );
