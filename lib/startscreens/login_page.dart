@@ -24,73 +24,86 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ModalProgressHUD(
-      inAsyncCall: showProgress,
-      child: Scaffold(
-        backgroundColor: ThemeColors.backgroundColor,
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Flexible(
-                child: Hero(
-                  tag: 'logo',
-                  child: Container(
-                    height: 200.0,
-                    child: Image.asset('images/logo.png'),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [0.5, 0.9],
+          colors: [
+            Colors.lightBlueAccent,
+            Colors.lightBlue,
+          ],
+        ),
+      ),
+      child: ModalProgressHUD(
+        inAsyncCall: showProgress,
+        child: Scaffold(
+          backgroundColor: ThemeColors.backgroundColor,
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Flexible(
+                  child: Hero(
+                    tag: 'logo',
+                    child: Container(
+                      height: 200.0,
+                      child: Image.asset('images/logo.png'),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 48.0,
-              ),
-              CustomInputField(
-                'Enter your email',
-                (value) {
-                  email = value;
-                },
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              CustomInputField(
-                'Enter your password.',
-                (value) {
-                  password = value;
-                },
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: CustomButton(
-                  label: 'Log In',
-                  color: Colors.yellow,
-                  action: () async {
-                    setState(() {
-                      showProgress = true;
-                    });
-
-                    try {
-                      final result = await _auth.signInWithEmailAndPassword(
-                          email: email, password: password);
-                      if (result != null) {
-                        Navigator.pushNamed(context, MainPage.routeName);
-                      }
-                    } catch (e) {
-                      print(e);
-                    } finally {
-                      setState(() {
-                        showProgress = false;
-                      });
-                    }
+                SizedBox(
+                  height: 48.0,
+                ),
+                CustomInputField(
+                  'Enter your email',
+                  (value) {
+                    email = value;
                   },
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 8.0,
+                ),
+                CustomInputField(
+                  'Enter your password',
+                  (value) {
+                    password = value;
+                  },
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  child: CustomButton(
+                    label: 'Log In',
+                    color: Colors.yellow,
+                    action: () async {
+                      setState(() {
+                        showProgress = true;
+                      });
+
+                      try {
+                        final result = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (result != null) {
+                          Navigator.pushNamed(context, MainPage.routeName);
+                        }
+                      } catch (e) {
+                        print(e);
+                      } finally {
+                        setState(() {
+                          showProgress = false;
+                        });
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

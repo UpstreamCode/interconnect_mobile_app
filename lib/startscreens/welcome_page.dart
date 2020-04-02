@@ -47,41 +47,54 @@ class _WelcomePageState extends State<WelcomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: colorAnimation.value,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Hero(
-                  tag: 'logo',
-                  child: Container(
-                    child: Image.asset('images/logo.png'),
-                    height: animation.value * 50,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.5, 0.9],
+            colors: [
+              Colors.lightBlueAccent,
+              Colors.lightBlue,
+            ],
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Hero(
+                    tag: 'logo',
+                    child: Container(
+                      child: Image.asset('images/logo.png'),
+                      height: animation.value * 50,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 48.0,
-            ),
-            CustomButton(
-              label: 'Login',
-              color: Colors.yellow,
-              action: () {
-                Navigator.pushNamed(context, LoginPage.routeName);
-              },
-            ),
-            CustomButton(
-              label: 'Register',
-              color: Colors.yellow,
-              action: () {
-                Navigator.pushNamed(context, RegistrationPage.routeName);
-              },
-            ),
-          ],
+                ],
+              ),
+              SizedBox(
+                height: 48.0,
+              ),
+              CustomButton(
+                label: 'Login',
+                color: Colors.yellow,
+                action: () {
+                  Navigator.pushNamed(context, LoginPage.routeName);
+                },
+              ),
+              CustomButton(
+                label: 'Register',
+                color: Colors.yellow,
+                action: () {
+                  Navigator.pushNamed(context, RegistrationPage.routeName);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

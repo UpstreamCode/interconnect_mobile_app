@@ -10,7 +10,7 @@ class CustomInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.left,
       onChanged: action,
       style: TextStyle(color: Colors.black87),
       decoration: kTextFieldDecoration.copyWith(
