@@ -4,6 +4,7 @@ import 'package:interconnect_mobile_app/home/home_page.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
 import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
 import 'package:interconnect_mobile_app/profile/profile_page.dart';
+import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.brown,
+        primarySwatch: ThemeColors.primary,
       ),
       initialRoute: '/',
       routes: {
@@ -56,9 +57,9 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   static const List<Destination> _pageOptions = <Destination>[
-    Destination(0, 'Home', Icons.home, Colors.brown, HomePage()),
-    Destination(1, 'Meetups', Icons.people, Colors.cyan, MeetupsPage()),
-    Destination(2, 'Me', Icons.person, Colors.orange, ProfilePage()),
+    Destination(0, 'Home', Icons.home, ThemeColors.lightSecondary, HomePage()),
+    Destination(1, 'Meetups', Icons.people, ThemeColors.lightSecondary, MeetupsPage()),
+    Destination(2, 'Me', Icons.person, ThemeColors.lightSecondary, ProfilePage()),
   ];
 
   void _onItemTapped(int index) {
@@ -85,7 +86,7 @@ class _MainPageState extends State<MainPage> {
           }
         ).toList(),
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: ThemeColors.accent,
         onTap: _onItemTapped,
       ),
     );
