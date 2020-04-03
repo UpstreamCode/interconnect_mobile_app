@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.green,
       ),
       initialRoute: '/',
       routes: {
@@ -58,7 +58,7 @@ class _MainPageState extends State<MainPage> {
   static const List<Destination> _pageOptions = <Destination>[
     Destination(0, 'Home', Icons.home, Colors.brown, HomePage()),
     Destination(1, 'Meetups', Icons.people, Colors.cyan, MeetupsPage()),
-    Destination(2, 'Me', Icons.person, Colors.orange, ProfilePage()),
+    Destination(2, 'Profile', Icons.person, Colors.orange, ProfilePage()),
   ];
 
   void _onItemTapped(int index) {

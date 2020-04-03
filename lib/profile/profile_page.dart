@@ -21,12 +21,48 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(32.0),
-        alignment: Alignment.center,
-        child: TextField(controller: _textController),
-      ),
-    );
+     body: Column(
+          children: <Widget> [
+            Image.asset(
+             'images/avatar.png',
+             width:800,
+             height: 120,
+             //fit: BoxFit.cover,
+            ),
+
+            //TECHDEBT: Move ListTiles to separate widget
+            ListTile(
+              title: Text('John Dow'),
+              trailing: Text('Button Here'),
+              subtitle: Text('San Francisco, CA'),
+              ),
+            ListTile(
+              leading: Icon( Icons.notifications),
+              title: Text('Notifications'),
+            ),
+            ListTile(
+              leading: Icon( Icons.settings),
+              title: Text('General'),
+            ),
+              ListTile(
+              leading: Icon( Icons.person),
+              title: Text('Account'),
+            ),
+              ListTile(
+              leading: Icon( Icons.lock),
+              title: Text('Privacy'),
+            ),
+              ListTile(
+              leading: Icon( Icons.cancel),
+              title: Text('Block'),
+            ),
+              ListTile(
+              leading: Icon( Icons.help),
+              title: Text('Help'),
+            ),
+          ],
+        )
+     );
   }
 
   @override
