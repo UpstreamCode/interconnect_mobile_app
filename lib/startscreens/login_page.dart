@@ -63,6 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                   (value) {
                     email = value;
                   },
+                  false, //obscure
                 ),
                 SizedBox(
                   height: 8.0,
@@ -72,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                   (value) {
                     password = value;
                   },
+                  true, // obscure
                 ),
                 SizedBox(
                   height: 24.0,
