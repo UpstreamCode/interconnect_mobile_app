@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "966353310092",
+    "firebase_url": "https://interconnect-app.firebaseio.com",
+    "project_id": "interconnect-app",
+    "storage_bucket": "interconnect-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966353310092:android:3cf434bcde3b93461546a9",
+        "android_client_info": {
+          "package_name": "com.example.interconnect_mobile_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966353310092-cjnbg88ptqijll9ve4m0cvk6vmn97bi4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN9Kr8OpJmJhvPNwM9JjKXgBxIswwfDsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966353310092-cjnbg88ptqijll9ve4m0cvk6vmn97bi4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
