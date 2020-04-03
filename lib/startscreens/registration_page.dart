@@ -47,6 +47,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 (value) {
                   email = value;
                 },
+                false, // obscure
               ),
               SizedBox(
                 height: 8.0,
@@ -56,6 +57,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 (value) {
                   password = value;
                 },
+                true, // obscure
               ),
               SizedBox(
                 height: 24.0,
