@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 /// gradient = 0xFF71C9BF - 0xFF18989B
 
 class ThemeColors {
-  static const backgroundColor = Colors.white;
+  static const backgroundColor = Colors.lightBlueAccent;
   static const primary = Colors.teal;
   static const accent = Colors.amber;
   static const darkSecondary = Colors.blueGrey;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:interconnect_mobile_app/destination.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({ Key key }) : super(key: key);

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:interconnect_mobile_app/destination.dart';
-import 'package:interconnect_mobile_app/home/home_page.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
 import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
 import 'package:interconnect_mobile_app/profile/profile_page.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
+import 'package:interconnect_mobile_app/startscreens/login_page.dart';
+import 'package:interconnect_mobile_app/startscreens/main_page.dart';
+import 'package:interconnect_mobile_app/startscreens/registration_page.dart';
+import 'package:interconnect_mobile_app/startscreens/welcome_page.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,13 +29,15 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => MainPage(),
+        '/': (context) => WelcomePage(),
         ChatPage.routeName: (context) => ChatPage(),
+        LoginPage.routeName: (context) => LoginPage(),
+        MainPage.routeName: (context) => MainPage(),
+        RegistrationPage.routeName: (context) => RegistrationPage(),
       },
     );
   }
 }
-
 class MainPage extends StatefulWidget {
   MainPage({Key key, this.title}) : super(key: key);
 
