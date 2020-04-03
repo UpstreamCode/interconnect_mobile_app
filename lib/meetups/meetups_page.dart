@@ -29,8 +29,27 @@ class MeetupsPage extends StatelessWidget {
     );
   }
 
+  Widget _infoCard(Person person) {
+    return new Padding(
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 24),
+        child: SizedBox(
+          width: double.infinity,
+          child: Card(
+            child: Padding(
+              padding: EdgeInsets.all(24),
+              child: Text("Hi!  My name is Susie.  "
+                  "I have been a member of Crosspoint for 5 years.  "
+                  "I live in San Fran with my husband and two daughters.",
+                style: TextStyle(color: ThemeColors.primaryDark),)
+            )
+          )
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+
     const List<Person> people = <Person>[
       Person(name: 'Hannah'),
       Person(name: 'Jessica'),
@@ -38,23 +57,24 @@ class MeetupsPage extends StatelessWidget {
       Person(name: 'Taylor')
     ];
 
+    Person selectedPerson = people[0];
+
     return Scaffold(
         body: Column(
         children: <Widget> [
-          Padding(
-              padding: EdgeInsets.all(30),
-              child: Container(
-                color: ThemeColors.primary[500],
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(30,30,30,0),
-                    child: GridView.count(
-                    shrinkWrap: true,
-                    crossAxisCount: 2,
-                    children: people.map((person) => _circleImage(person)).toList(),
-                  )
-                )
-              )
+          Container(
+            height: 120,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
+              child: GridView.count(
+                crossAxisCount: 1,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                children: people.map((person) => _circleImage(person)).toList(),
+            )
           )
+          ),
+          _infoCard(selectedPerson)
         ]
       )
     );
