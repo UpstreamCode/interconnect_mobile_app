@@ -59,13 +59,8 @@ class ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
   }
 
   Widget build(BuildContext context) {
-    // Extract the arguments from the current ModalRoute settings and cast
-    // them as ScreenArguments.
-    final ChatArgs args = ModalRoute.of(context).settings.arguments;
 
-    return new Scaffold(
-      appBar: new AppBar(title: new Text(args.name)),
-      body: new Column(
+    return Column(
         children: <Widget>[
         new Flexible(
           child: new ListView.builder(
@@ -82,7 +77,6 @@ class ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
           child: _buildTextComposer(),                         //modified
         ),
        ]
-     ),
    );
   }
 }

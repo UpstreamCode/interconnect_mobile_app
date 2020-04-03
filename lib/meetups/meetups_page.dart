@@ -31,12 +31,12 @@ class MeetupsPage extends StatelessWidget {
 
   Widget _infoCard(Person person) {
     return new Padding(
-        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 24),
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
         child: SizedBox(
           width: double.infinity,
           child: Card(
             child: Padding(
-              padding: EdgeInsets.all(24),
+              padding: EdgeInsets.all(20),
               child: Text("Hi!  My name is Susie.  "
                   "I have been a member of Crosspoint for 5 years.  "
                   "I live in San Fran with my husband and two daughters.",
@@ -74,7 +74,10 @@ class MeetupsPage extends StatelessWidget {
             )
           )
           ),
-          _infoCard(selectedPerson)
+          _infoCard(selectedPerson),
+           Expanded(
+             child: ChatPage(),
+           )
         ]
       )
     );
