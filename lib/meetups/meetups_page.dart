@@ -29,7 +29,9 @@ class MeetupsPage extends StatelessWidget {
                   Dimensions.marginStandard,
                   0
                 ),
+                color: ThemeColors.primary,
                 child: InkWell(
+                  splashColor: ThemeColors.primary,
                   onTap: () {
                     // push next page
                      Navigator.pushNamed(
