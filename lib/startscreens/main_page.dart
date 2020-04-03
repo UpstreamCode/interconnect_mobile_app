@@ -5,7 +5,7 @@ import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
 import 'package:interconnect_mobile_app/profile/profile_page.dart';
 
 class MainPage extends StatefulWidget {
-  static const routeName = "/main";
+  static const routeName = '/';
   MainPage({Key key, this.title}) : super(key: key);
 
   final String title;
