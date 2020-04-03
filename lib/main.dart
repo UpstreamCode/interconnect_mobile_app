@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:interconnect_mobile_app/destination.dart';
+import 'package:interconnect_mobile_app/entities/destination.dart';
+import 'package:interconnect_mobile_app/entities/user.dart';
 import 'package:interconnect_mobile_app/home/home_page.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
 import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
@@ -10,9 +13,25 @@ import 'package:interconnect_mobile_app/startscreens/main_page.dart';
 import 'package:interconnect_mobile_app/startscreens/registration_page.dart';
 import 'package:interconnect_mobile_app/startscreens/welcome_page.dart';
 
-void main() => runApp(MyApp());
+
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  bool loggedIn = await User.isLoggedIn();
+
+  if (loggedIn) {
+    runApp(MyApp(MainPage.routeName));
+  } else {
+    runApp(MyApp(WelcomePage.routeName));
+  }
+}
 
 class MyApp extends StatelessWidget {
+  final String initialRoute;
+
+  MyApp(this.initialRoute);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,14 +48,15 @@ class MyApp extends StatelessWidget {
         ),
         accentColor: ThemeColors.accent,
       ),
-      initialRoute: '/',
+      initialRoute: initialRoute,
       routes: {
-        '/': (context) => WelcomePage(),
+        '/': (context) => MainPage(),
+        WelcomePage.routeName: (context) => WelcomePage(),
         ChatPage.routeName: (context) => ChatPage(),
         LoginPage.routeName: (context) => LoginPage(),
-        MainPage.routeName: (context) => MainPage(),
         RegistrationPage.routeName: (context) => RegistrationPage(),
       },
     );
   }
 }
+

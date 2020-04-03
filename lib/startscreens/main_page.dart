@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interconnect_mobile_app/destination.dart';
+import 'package:interconnect_mobile_app/entities/destination.dart';
 import 'package:interconnect_mobile_app/home/home_page.dart';
 import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
 import 'package:interconnect_mobile_app/profile/profile_page.dart';

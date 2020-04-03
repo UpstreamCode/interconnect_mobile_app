@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       try {
                         final result = await _auth.signInWithEmailAndPassword(
-                            email: email, password: password);
+                            email: email.trim(), password: password);
                         if (result != null) {
                           Navigator.pushNamed(context, MainPage.routeName);
                         }

@@ -6,6 +6,8 @@ import 'login_page.dart';
 import 'registration_page.dart';
 
 class WelcomePage extends StatefulWidget {
+  static String routeName = "welcome";
+
   @override
   _WelcomePageState createState() => _WelcomePageState();
 }
