@@ -19,6 +19,15 @@ class MyApp extends StatelessWidget {
       title: 'Interconnect App',
       theme: ThemeData(
         primarySwatch: ThemeColors.primary,
+        primaryIconTheme: Theme.of(context).primaryIconTheme.copyWith(
+            color: Colors.white
+        ),
+        primaryTextTheme: TextTheme(
+            title: TextStyle(
+                color: Colors.white
+            )
+        ),
+        accentColor: ThemeColors.accent,
       ),
       initialRoute: '/',
       routes: {

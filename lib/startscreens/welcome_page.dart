@@ -27,8 +27,8 @@ class _WelcomePageState extends State<WelcomePage>
 
     animation = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
     colorAnimation = ColorTween(
-      begin: Colors.blueAccent,
-      end: ThemeColors.backgroundColor,
+      begin: ThemeColors.primary,
+      end: ThemeColors.primaryDark,
     ).animate(controller);
     controller.forward();
 
@@ -54,8 +54,8 @@ class _WelcomePageState extends State<WelcomePage>
             end: Alignment.bottomCenter,
             stops: [0.5, 0.9],
             colors: [
-              Colors.lightBlueAccent,
-              Colors.lightBlue,
+              ThemeColors.primary,
+              ThemeColors.primaryDark,
             ],
           ),
         ),
@@ -81,14 +81,14 @@ class _WelcomePageState extends State<WelcomePage>
               ),
               CustomButton(
                 label: 'Login',
-                color: Colors.yellow,
+                color: ThemeColors.accent,
                 action: () {
                   Navigator.pushNamed(context, LoginPage.routeName);
                 },
               ),
               CustomButton(
                 label: 'Register',
-                color: Colors.yellow,
+                color: ThemeColors.accent,
                 action: () {
                   Navigator.pushNamed(context, RegistrationPage.routeName);
                 },

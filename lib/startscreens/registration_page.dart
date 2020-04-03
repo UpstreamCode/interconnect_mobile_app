@@ -26,7 +26,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return ModalProgressHUD(
       inAsyncCall: showProgress,
       child: Scaffold(
-        backgroundColor: ThemeColors.backgroundColor,
+        backgroundColor: ThemeColors.primary,
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
@@ -66,7 +66,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: CustomButton(
                   label: 'Register',
-                  color: Colors.yellow,
+                  color: ThemeColors.accent,
                   action: () async {
                     setState(() {
                       showProgress = true;

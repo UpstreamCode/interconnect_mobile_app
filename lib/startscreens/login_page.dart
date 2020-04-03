@@ -31,15 +31,15 @@ class _LoginPageState extends State<LoginPage> {
           end: Alignment.bottomCenter,
           stops: [0.5, 0.9],
           colors: [
-            Colors.lightBlueAccent,
-            Colors.lightBlue,
+            ThemeColors.primary,
+            ThemeColors.primaryDark,
           ],
         ),
       ),
       child: ModalProgressHUD(
         inAsyncCall: showProgress,
         child: Scaffold(
-          backgroundColor: ThemeColors.backgroundColor,
+          backgroundColor: ThemeColors.primary,
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.symmetric(vertical: 16.0),
                   child: CustomButton(
                     label: 'Log In',
-                    color: Colors.yellow,
+                    color: ThemeColors.accent,
                     action: () async {
                       setState(() {
                         showProgress = true;
