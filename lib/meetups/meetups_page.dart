@@ -1,58 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/constants/dimensions.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
+import 'package:interconnect_mobile_app/entities/person.dart';
 import 'package:interconnect_mobile_app/meetups/chat_args.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
 
 class MeetupsPage extends StatelessWidget {
   const MeetupsPage({ Key key}) : super(key: key);
 
+  Widget _circleImage(Person person) {
+    return new Column(
+        children: <Widget>[
+          RaisedButton(
+            key: Key('Button'),
+            shape: CircleBorder(),
+            color: ThemeColors.primaryLight,
+            child: Container(
+                height: 60,
+                child: Icon(Icons.person, color: ThemeColors.primary,)
+                ),
+            onPressed: () => {},
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0,Dimensions.marginStandard,0,0),
+            child: Text(person.name, style: TextStyle(color: ThemeColors.primaryDark),)
+          ),
+    ]
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    const List<String> groups = <String>[
-      'Hannah',
-      'Jessica & Dave',
-      'Amir & Hope',
-      'Taylor & Taylor'
+    const List<Person> people = <Person>[
+      Person(name: 'Hannah'),
+      Person(name: 'Jessica'),
+      Person(name: 'Amir'),
+      Person(name: 'Taylor')
     ];
 
     return Scaffold(
-      body: SizedBox.expand(
-        child: ListView.builder(
-          itemCount: groups.length,
-          itemBuilder: (BuildContext context, int index) {
-            return SizedBox(
-              height: 128,
-              child: Card(
-                margin: EdgeInsets.fromLTRB(
-                    Dimensions.marginStandard,
-                  Dimensions.marginStandard,
-                  Dimensions.marginStandard,
-                  0
-                ),
-                color: ThemeColors.primary,
-                child: InkWell(
-                  splashColor: ThemeColors.primary,
-                  onTap: () {
-                    // push next page
-                     Navigator.pushNamed(
-                         context,
-                         ChatPage.routeName,
-                       arguments: ChatArgs(
-                         groups[index],
-                         'Here is a message!'
-                       )
-                     );
-                  },
-                  child: Center(
-                    child: Text(groups[index]),
-                  ),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
+        body: Column(
+        children: <Widget> [
+          Padding(
+              padding: EdgeInsets.all(30),
+              child: Container(
+                color: ThemeColors.primary[500],
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(30,30,30,0),
+                    child: GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    children: people.map((person) => _circleImage(person)).toList(),
+                  )
+                )
+              )
+          )
+        ]
+      )
     );
   }
 }
