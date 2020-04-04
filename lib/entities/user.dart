@@ -21,4 +21,12 @@ class User {
   }
 }
 
+  static signOut() async {
+    try {
+      _firebaseAuth.signOut();
+    } catch (e) {
+      return false;
+    }
+  }
+
 }
