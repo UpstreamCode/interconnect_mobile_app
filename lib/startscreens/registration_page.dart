@@ -17,6 +17,10 @@ class RegistrationPage extends StatefulWidget {
 class _RegistrationPageState extends State<RegistrationPage> {
   final _auth = FirebaseAuth.instance;
   String email;
+  String firstName;
+  String lastName;
+  String description;
+  String passwordConfirm;
   String password;
 
   bool showProgress = false;
@@ -43,7 +47,37 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 height: 48.0,
               ),
               CustomInputField(
-                'Enter your email',
+                'First Name',
+                (value) {
+                  firstName = value;
+                },
+                false, // obscure
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              CustomInputField(
+                'Last Name',
+                (value) {
+                  lastName = value;
+                },
+                false, // obscure
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              CustomInputField(
+                'Description',
+                (value) {
+                  description = value;
+                },
+                false, // obscure
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              CustomInputField(
+                'Email',
                 (value) {
                   email = value;
                 },
@@ -53,9 +87,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 height: 8.0,
               ),
               CustomInputField(
-                'Enter your password',
+                'Password',
                 (value) {
                   password = value;
+                },
+                true, // obscure
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              CustomInputField(
+                'Confirm Password',
+                (value) {
+                  passwordConfirm = value;
                 },
                 true, // obscure
               ),
@@ -68,22 +112,24 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   label: 'Register',
                   color: ThemeColors.accent,
                   action: () async {
-                    setState(() {
-                      showProgress = true;
-                    });
-
-                    try {
-                      final user = await _auth.createUserWithEmailAndPassword(
-                          email: email, password: password);
-                      if (user != null) {
-                        Navigator.pushNamed(context, MainPage.routeName);
-                      }
-                    } catch (e) {
-                      print(e);
-                    } finally {
+                    if (password == passwordConfirm) {
                       setState(() {
-                        showProgress = false;
+                        showProgress = true;
                       });
+
+                      try {
+                        final user = await _auth.createUserWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.pushNamed(context, MainPage.routeName);
+                        }
+                      } catch (e) {
+                        print(e);
+                      } finally {
+                        setState(() {
+                          showProgress = false;
+                        });
+                      }
                     }
                   },
                 ),
