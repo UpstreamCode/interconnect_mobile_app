@@ -16,7 +16,12 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
   final _auth = FirebaseAuth.instance;
+
   String email;
+  String firstName;
+  String lastName;
+  String description;
+  String passwordConfirm;
   String password;
 
   bool showProgress = false;
@@ -27,70 +32,145 @@ class _RegistrationPageState extends State<RegistrationPage> {
       inAsyncCall: showProgress,
       child: Scaffold(
         backgroundColor: ThemeColors.primary,
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Flexible(
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('images/logo.png'),
+        body: Builder(builder: (BuildContext context) {
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Flexible(
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('images/logo.png'),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 48.0,
-              ),
-              CustomInputField(
-                'Enter your email',
-                (value) {
-                  email = value;
-                },
-                false, // obscure
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              CustomInputField(
-                'Enter your password',
-                (value) {
-                  password = value;
-                },
-                true, // obscure
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: CustomButton(
-                  label: 'Register',
-                  color: ThemeColors.accent,
-                  action: () async {
-                    setState(() {
-                      showProgress = true;
-                    });
-
-                    try {
-                      final user = await _auth.createUserWithEmailAndPassword(
-                          email: email, password: password);
-                      if (user != null) {
-                        Navigator.pushNamed(context, MainPage.routeName);
-                      }
-                    } catch (e) {
-                      print(e);
-                    } finally {
-                      setState(() {
-                        showProgress = false;
-                      });
-                    }
+                SizedBox(
+                  height: 20.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 26.0),
+                  child: Text(
+                    'Setup your personal profile',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  height: 18.0,
+                ),
+                CustomInputField(
+                  'First Name',
+                  (value) {
+                    firstName = value;
                   },
+                  false, // obscure
                 ),
-              ),
-            ],
-          ),
-        ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                CustomInputField(
+                  'Last Name',
+                  (value) {
+                    lastName = value;
+                  },
+                  false, // obscure
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                CustomInputField(
+                  'Description',
+                  (value) {
+                    description = value;
+                  },
+                  false, // obscure
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                CustomInputField(
+                  'Email',
+                  (value) {
+                    email = value;
+                  },
+                  false, // obscure
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                CustomInputField(
+                  'Password',
+                  (value) {
+                    password = value;
+                  },
+                  true, // obscure
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                CustomInputField(
+                  'Confirm Password',
+                  (value) {
+                    passwordConfirm = value;
+                  },
+                  true, // obscure
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 26.0),
+                  child: Text(
+                    'By creating an account you agree our Terms of Service and Privacy Policy',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  child: CustomButton(
+                    label: 'CONTINUE',
+                    color: ThemeColors.accent,
+                    action: () async {
+                      if (password == passwordConfirm) {
+                        setState(() {
+                          showProgress = true;
+                        });
+
+                        try {
+                          final user =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: email, password: password);
+                          if (user != null) {
+                            Navigator.pushNamed(context, MainPage.routeName);
+                          }
+                        } catch (e) {
+                          print(e);
+                          Scaffold.of(context).showSnackBar(
+                              SnackBar(content: Text(e.toString())));
+                        } finally {
+                          setState(() {
+                            showProgress = false;
+                          });
+                        }
+                      } else {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text('Both passwords must match')));
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+          );
+        }),
       ),
     );
   }
