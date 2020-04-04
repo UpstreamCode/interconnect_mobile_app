@@ -34,7 +34,7 @@ class PersonAvatarState extends State<PersonAvatar> {
           Padding(
               padding: EdgeInsets.fromLTRB(0, Dimensions.marginStandard, 0, 0),
               child: Text(
-                widget.person.name, style: TextStyle(color: ThemeColors.primaryDark),)
+                widget.person.firstName, style: TextStyle(color: ThemeColors.primaryDark),)
           ),
         ]
     );

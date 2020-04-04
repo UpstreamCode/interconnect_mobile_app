@@ -1,12 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:interconnect_mobile_app/api/api.dart';
 import 'package:interconnect_mobile_app/constants/dimensions.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
+import 'package:interconnect_mobile_app/entities/user.dart';
+import 'package:interconnect_mobile_app/meetups/chat_args.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
 import 'package:interconnect_mobile_app/meetups/person_avatar.dart';
 
-class MeetupsPage extends StatelessWidget {
+class MeetupsPage extends StatefulWidget {
   const MeetupsPage({ Key key}) : super(key: key);
+
+  @override
+  MeetupsPageState createState() { return MeetupsPageState(); }
+
+}
+
+class MeetupsPageState extends State<MeetupsPage> {
+
+  List<Person> people;
+
+  initState() {
+    super.initState();
+    getMatches();
+  }
+
+  getMatches() async {
+
+    var uid = await User.getUid();
+    var result = await Api.getMatchGroup(uid);
+
+    setState(() {
+      people = result;
+    });
+  }
 
   Widget _infoCard(Person person) {
     return new Padding(
@@ -30,12 +57,11 @@ class MeetupsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    const List<Person> people = <Person>[
-      Person(name: 'Susie'),
-      Person(name: 'Jessica'),
-      Person(name: 'Amir'),
-      Person(name: 'Taylor')
-    ];
+    if (people == null) {
+      return Container(
+        child: Text("no matches yet")
+      );
+    }
 
     Person selectedPerson = people[0];
 
@@ -62,4 +88,5 @@ class MeetupsPage extends StatelessWidget {
       )
     );
   }
+
 }
