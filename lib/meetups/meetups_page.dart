@@ -10,6 +10,7 @@ import 'package:interconnect_mobile_app/meetups/person_avatar.dart';
 
 class MeetupsPage extends StatefulWidget {
   const MeetupsPage({ Key key}) : super(key: key);
+  static const routeName = '/meetup';
 
   @override
   MeetupsPageState createState() { return MeetupsPageState(); }

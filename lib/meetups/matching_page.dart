@@ -6,6 +6,7 @@ import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
 import 'package:interconnect_mobile_app/entities/user.dart';
 import 'package:interconnect_mobile_app/meetups/matches_grid.dart';
+import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
 
 class MatchingPage extends StatefulWidget {
   const MatchingPage({ Key key}) : super(key: key);
@@ -15,11 +16,7 @@ class MatchingPage extends StatefulWidget {
   static const routeName = 'matching';
 }
 
-class _MatchingPageState extends State<MatchingPage>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation animation;
-  Animation colorAnimation;
+class _MatchingPageState extends State<MatchingPage>{
   static List<Person> matches;
 
   @override
@@ -114,7 +111,8 @@ class _MatchingPageState extends State<MatchingPage>
                     label: buttonText,
                     color: matches != null ? ThemeColors.accent : Colors.grey,
                     action: () {
-                      // Navigator.pushNamed(context, );
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context) => new MeetupsPage()));
                     },
                   ),
                 ),
