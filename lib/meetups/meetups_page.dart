@@ -58,9 +58,7 @@ class MeetupsPageState extends State<MeetupsPage> {
   Widget build(BuildContext context) {
 
     if (people == null) {
-      return Container(
-        child: Text("no matches yet")
-      );
+      return CircularProgressIndicator();
     }
 
     Person selectedPerson = people[0];
