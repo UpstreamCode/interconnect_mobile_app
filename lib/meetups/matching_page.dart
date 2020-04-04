@@ -109,7 +109,7 @@ class _MatchingPageState extends State<MatchingPage>
                   height: 125.0,
                   child: CustomButton(
                     label: buttonText,
-                    color: Colors.grey,
+                    color: matches.isNotEmpty ? ThemeColors.accent : Colors.grey,
                     action: () {
                       // Navigator.pushNamed(context, );
                     },
