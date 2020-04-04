@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:interconnect_mobile_app/components/avatar.dart';
+import 'package:interconnect_mobile_app/constants/dimensions.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
+import 'package:interconnect_mobile_app/entities/user.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({ Key key}) : super(key: key);
@@ -10,6 +14,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   TextEditingController _textController;
+  bool loggedIn = true;
 
   @override
   void initState() {
@@ -17,64 +22,89 @@ class _ProfilePageState extends State<ProfilePage> {
     _textController = TextEditingController(
       text: 'sample text',
     );
+    getSignedInState();
+  }
+
+  getSignedInState() async {
+    var result = await User.isLoggedIn();
+    if (this.mounted) {
+      setState(() {
+        loggedIn = result;
+      });
+    }
+  }
+
+  signOut() async {
+    await User.signOut();
+    getSignedInState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body: Column(
+     body: Padding(
+       padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: Dimensions.marginStandard),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget> [
+          Column(
           children: <Widget> [
-            Image.asset(
-             'images/avatar.png',
-             width:800,
-             height: 120,
-             //fit: BoxFit.cover,
-            ),
+            Avatar(width: 100, height: 100),
             //TECHDEBT: Move ListTiles to separate widget
-            ListTile(
-              title: Text('John Dow'),
-              trailing: Text('Button Here'),
-              subtitle: Text('San Francisco, CA'),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.0),
+              child: ListTile(
+              title: Text('John Doe', style: TextStyle(color: ThemeColors.primaryDark, fontWeight: FontWeight.bold)),
+              subtitle: Text('San Francisco, CA', style: TextStyle(color: ThemeColors.primary)),
+              )
+            ),
+            Card(
+              margin: EdgeInsets.fromLTRB(20,0,20,0),
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text("Hi!  My name is John.  I have been a member of Crosspoint for 5 years.  "
+                  "I live in San Fran with my wife and two daughters.",
+                style: TextStyle(color: ThemeColors.primary)
+                ),
               ),
-            ListTile(
-              leading: Icon( Icons.notifications),
-              title: Text('Notifications'),
             ),
-            ListTile(
-              leading: Icon( Icons.settings),
-              title: Text('General'),
+            SizedBox(
+                width: double.infinity,
+                child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                  child: RaisedButton(
+                    onPressed: () => {},
+                    color: ThemeColors.accent,
+                    child: Text("update bio", style: TextStyle(color: Colors.white),)
+                )
+                )
             ),
-              ListTile(
-              leading: Icon( Icons.person),
-              title: Text('Account'),
-            ),
-              ListTile(
-              leading: Icon( Icons.lock),
-              title: Text('Privacy'),
-            ),
-              ListTile(
-              leading: Icon( Icons.cancel),
-              title: Text('Block'),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.0),
+              child: ListTile(
+              leading: Icon( Icons.email, color: ThemeColors.primary,),
+              title: Text('Email: johndoe@email.com', style: TextStyle(color: ThemeColors.primary),),
+            )
             ),
             //   ListTile(
             //   leading: Icon( Icons.help),
             //   title: Text('Help'),
             // ),
-           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: ThemeColors.primary,
-              ),
-              child: ListTile(
-                title: Text('sign out'),
-              ),
-            ),
-           ),
           ],
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: RaisedButton(
+              color: loggedIn ? ThemeColors.accent : Colors.grey,
+              onPressed: () => signOut(),
+              child: Text("sign out", style: TextStyle(color: Colors.white),),
+            ),
+          ),
+        ]
         )
-     );
+     )
+    );
   }
 
   @override
