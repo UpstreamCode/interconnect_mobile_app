@@ -12,4 +12,13 @@ class User {
     }
   }
 
+  static getUid() async {
+    try {
+      final FirebaseUser user = await _firebaseAuth.currentUser();
+      return user.uid;
+    } catch (e) {
+      return false;
+  }
+}
+
 }
