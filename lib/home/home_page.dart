@@ -6,7 +6,6 @@ import 'package:interconnect_mobile_app/meetups/matching_page.dart';
 class HomePage extends StatelessWidget {
   const HomePage({ Key key }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
