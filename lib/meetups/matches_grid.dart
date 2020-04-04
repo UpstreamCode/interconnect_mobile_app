@@ -16,6 +16,7 @@ class MatchesGrid extends StatelessWidget {
               child: new Container(
                 width: 100.0,
                 height: 100.0,
+                child: new Container(
                   decoration: new BoxDecoration(
                     color: Colors.white,
                     border: new Border.all(
@@ -28,6 +29,7 @@ class MatchesGrid extends StatelessWidget {
                         image: new AssetImage('images/avatar.png',),
                     )
                   ),
+                ),
               ),
             );
           }),
