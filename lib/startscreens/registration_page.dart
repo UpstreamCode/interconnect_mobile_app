@@ -46,7 +46,21 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 48.0,
+                  height: 20.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 26.0),
+                  child: Text(
+                    'Setup your personal profile',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  height: 18.0,
                 ),
                 CustomInputField(
                   'First Name',
@@ -106,12 +120,23 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   true, // obscure
                 ),
                 SizedBox(
+                  height: 20.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 26.0),
+                  child: Text(
+                    'By creating an account you agree our Terms of Service and Privacy Policy',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizedBox(
                   height: 24.0,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 16.0),
                   child: CustomButton(
-                    label: 'Register',
+                    label: 'CONTINUE',
                     color: ThemeColors.accent,
                     action: () async {
                       if (password == passwordConfirm) {
