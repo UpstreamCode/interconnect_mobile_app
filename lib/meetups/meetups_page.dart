@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/constants/dimensions.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
-import 'package:interconnect_mobile_app/meetups/chat_args.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
 
 class MeetupsPage extends StatelessWidget {

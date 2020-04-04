@@ -5,6 +5,8 @@ import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/meetups/matches_grid.dart';
 
 class MatchingPage extends StatefulWidget {
+  const MatchingPage({ Key key}) : super(key: key);
+
   @override
   _MatchingPageState createState() => _MatchingPageState();
   static const routeName = 'matching';
@@ -28,14 +30,14 @@ class _MatchingPageState extends State<MatchingPage>
       body: Column(
         children: <Widget> [
           Padding(
-            padding: const EdgeInsets.fromLTRB(20.0, 55.0, 20.0, 20.0),
+            padding: const EdgeInsets.fromLTRB(20.0, 25.0, 20.0, 20.0),
             child: Image.asset(
               'images/logo.png',
               height: 50,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20.0, 25.0, 20.0, 20.0),
+            padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 20.0),
             child: FaIcon(
               FontAwesomeIcons.church,
               size: 100,
@@ -59,17 +61,17 @@ class _MatchingPageState extends State<MatchingPage>
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 75.0),
+            padding: EdgeInsets.symmetric(horizontal: 95.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.fromLTRB(20.0, 25.0, 20.0, 0),
-                  child: Text('Current Matches:', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                  child: Text('CURRENT MATCHES:', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
                 ),
                 SizedBox(
-                  height: 375.0,
+                  height: 275.0,
                   width: 5.0,
                   child: MatchesGrid()
                 ),
