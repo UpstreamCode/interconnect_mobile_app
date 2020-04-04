@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:interconnect_mobile_app/components/avatar.dart';
 import 'package:interconnect_mobile_app/constants/dimensions.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
@@ -24,11 +25,7 @@ class PersonAvatarState extends State<PersonAvatar> {
           RaisedButton(
             key: Key('Button'),
             shape: CircleBorder(),
-            color: ThemeColors.primaryLight,
-            child: Container(
-                height: 60,
-                child: Icon(Icons.person, color: ThemeColors.primary,)
-            ),
+            child: Avatar(image: widget.person.image,width: 60, height: 60),
             onPressed: () => {},
           ),
           Padding(

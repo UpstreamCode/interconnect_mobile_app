@@ -1,20 +1,20 @@
 class Person {
   final String firstName;
   final String lastName;
-  final String image;
   final String description;
   final String church;
   final String uid;
   final List<Contact> contactInfo;
+  String image;
 
-  const Person({
+  Person({
     this.firstName,
     this.lastName,
-    this.image,
     this.description,
     this.church,
     this.uid,
-    this.contactInfo
+    this.contactInfo,
+    this.image,
   });
 
   factory Person.fromJSON(Map<String, dynamic> json) {

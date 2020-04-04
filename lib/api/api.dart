@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:interconnect_mobile_app/api/photo_service.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
 import 'package:interconnect_mobile_app/meetups/mock_data.dart';
 
@@ -61,16 +62,26 @@ class Api {
     print("${response.statusCode}");
     print("${response.body}");
 
+    List<Person> people;
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       if (data != null) {
-        print("parsing "+data.toString());
-        var people = data['users'] as List;
-        return people.map((json) => Person.fromJSON(json)).toList();
+        var users = data['users'] as List;
+        people = users.map((json) => Person.fromJSON(json)).toList();
       }
     }
 
-    return null;
+    if (people!=null) {
+      people = await matchPeopleToPhotos(people);
+    }
+
+    return people;
   }
 
+  static Future<List<Person>> matchPeopleToPhotos(List<Person> people) async {
+    for (Person person in people) {
+      person.image = await PhotoService.getPhotoForUser(person.uid);
+    }
+    return people;
+  }
 }
