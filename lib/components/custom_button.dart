@@ -17,7 +17,6 @@ class CustomButton extends StatelessWidget {
         child: MaterialButton(
           onPressed: action,
           minWidth: 200.0,
-          height: 42.0,
           textColor: Colors.white,
           child: Text(
             label,

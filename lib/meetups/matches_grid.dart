@@ -17,6 +17,7 @@ class MatchesGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     List list = matches.isNotEmpty ? matches : placeholders;
     return GridView.builder(
+      shrinkWrap: true,
       primary: false,
       padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(

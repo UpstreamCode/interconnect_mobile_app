@@ -55,27 +55,32 @@ class _MatchingPageState extends State<MatchingPage>
 
   @override
   Widget build(BuildContext context) {
+
+    double screenWidth = MediaQuery.of(context).size.width;
+    double lrMargin = screenWidth*.10;
+
     return Scaffold(
       backgroundColor: ThemeColors.primary,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget> [
           Padding(
-            padding: const EdgeInsets.fromLTRB(20.0, 25.0, 20.0, 20.0),
+            padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0),
             child: Image.asset(
               'images/logo.png',
               height: 50,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 20.0),
+            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
             child: FaIcon(
               FontAwesomeIcons.church,
-              size: 100,
+              size: 60,
               color: ThemeColors.primaryDark,
             )
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(75.0, 0, 75.0, 0),
+            padding: EdgeInsets.fromLTRB(lrMargin, 0, lrMargin, 20.0),
             child: ListTile(
               title: Text(
                 'Crosspoint Church', 
@@ -91,22 +96,20 @@ class _MatchingPageState extends State<MatchingPage>
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 95.0),
+            padding: EdgeInsets.symmetric(horizontal: 25.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.fromLTRB(20.0, 25.0, 20.0, 0),
+                  padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                   child: Text('CURRENT MATCHES:', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
                 ),
                 SizedBox(
-                  height: 275.0,
-                  width: 5.0,
+                  width: screenWidth - lrMargin*2,
                   child: MatchesGrid(matches:matches)
                 ),
                 SizedBox(
-                  height: 125.0,
                   child: CustomButton(
                     label: buttonText,
                     color: matches.isNotEmpty ? ThemeColors.accent : Colors.grey,
