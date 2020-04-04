@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/api/api.dart';
-import 'package:interconnect_mobile_app/constants/dimensions.dart';
+import 'package:interconnect_mobile_app/components/custom_button.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
 import 'package:interconnect_mobile_app/entities/user.dart';
-import 'package:interconnect_mobile_app/meetups/chat_args.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
+import 'package:interconnect_mobile_app/meetups/icebreakers_page.dart';
 import 'package:interconnect_mobile_app/meetups/person_avatar.dart';
 
 class MeetupsPage extends StatefulWidget {
@@ -97,7 +97,17 @@ class MeetupsPageState extends State<MeetupsPage> {
                ]),
            Expanded(
              child: ChatPage(),
-           )
+           ),
+           CustomButton(
+                label: 'Click to get a match!',
+                color: ThemeColors.accent,
+                action: () {
+                  Navigator.push(context, new MaterialPageRoute(
+                    builder: (context) =>
+                      new IcebreakersPage())
+                  );
+                },
+              ),
         ]
       )
     );
