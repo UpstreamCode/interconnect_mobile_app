@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({ Key key}) : super(key: key);
@@ -29,7 +30,6 @@ class _ProfilePageState extends State<ProfilePage> {
              height: 120,
              //fit: BoxFit.cover,
             ),
-
             //TECHDEBT: Move ListTiles to separate widget
             ListTile(
               title: Text('John Dow'),
@@ -56,10 +56,22 @@ class _ProfilePageState extends State<ProfilePage> {
               leading: Icon( Icons.cancel),
               title: Text('Block'),
             ),
-              ListTile(
-              leading: Icon( Icons.help),
-              title: Text('Help'),
+            //   ListTile(
+            //   leading: Icon( Icons.help),
+            //   title: Text('Help'),
+            // ),
+           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5.0),
+                color: ThemeColors.primary,
+              ),
+              child: ListTile(
+                title: Text('sign out'),
+              ),
             ),
+           ),
           ],
         )
      );
