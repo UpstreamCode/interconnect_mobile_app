@@ -66,7 +66,6 @@ class Api {
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       if (data != null) {
-        print("parsing "+data.toString());
         var users = data['users'] as List;
         people = users.map((json) => Person.fromJSON(json)).toList();
       }
@@ -82,7 +81,6 @@ class Api {
   static Future<List<Person>> matchPeopleToPhotos(List<Person> people) async {
     for (Person person in people) {
       person.image = await PhotoService.getPhotoForUser(person.uid);
-      print(person.image);
     }
     return people;
   }

@@ -3,9 +3,6 @@
 class PhotoService {
 
   static Future<String> getPhotoForUser(String uid) async {
-
-    print("uid: "+uid.toString());
-
     // network delay
     await Future.delayed(const Duration(milliseconds: 200), (){});
 

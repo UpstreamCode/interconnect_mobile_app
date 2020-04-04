@@ -38,9 +38,11 @@ class _MatchingPageState extends State<MatchingPage>
     var uid = await User.getUid();
     var result = await Api.getMatchGroup(uid);
 
-    setState(() {
-      matches = result;
-    });
+    if (this.mounted) {
+      setState(() {
+        matches = result;
+      });
+    }
   }
 
   bool hasMatches() {

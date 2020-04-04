@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interconnect_mobile_app/components/avatar.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
 
@@ -6,7 +7,6 @@ class MatchesGrid extends StatelessWidget {
   final List<Person> people;
   const MatchesGrid({Key key, @required this.people}) : super(key: key);
 
-  static const placeholder = 'images/avatar.png';
 
   @override
   Widget build(BuildContext context) {
@@ -22,25 +22,10 @@ class MatchesGrid extends StatelessWidget {
       // Convert each item into a widget based on the type of item it is.
       itemBuilder: (context, index) {
         final person = people[index];
-        return Center(
-          child: new Container(
-            width: 100.0,
-            height: 100.0,
-            child: new Container(
-              decoration: new BoxDecoration(
-                color: Colors.white,
-                border: new Border.all(
-                    color: ThemeColors.primaryLight,
-                    width: 5.0,
-                    style: BorderStyle.solid
-                ),
-                shape: BoxShape.circle,
-                image: new DecorationImage(
-                    image: new AssetImage(person.image is String && person.image.isNotEmpty ? person.image : placeholder),
-                )
-              ),
-            ),
-          ),
+        return Avatar(
+            width: 100,
+            height: 100,
+            image: person.image
         );
       },
     );
