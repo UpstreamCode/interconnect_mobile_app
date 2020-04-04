@@ -3,30 +3,10 @@ import 'package:interconnect_mobile_app/constants/dimensions.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
+import 'package:interconnect_mobile_app/meetups/person_avatar.dart';
 
 class MeetupsPage extends StatelessWidget {
   const MeetupsPage({ Key key}) : super(key: key);
-
-  Widget _circleImage(Person person) {
-    return new Column(
-        children: <Widget>[
-          RaisedButton(
-            key: Key('Button'),
-            shape: CircleBorder(),
-            color: ThemeColors.primaryLight,
-            child: Container(
-                height: 60,
-                child: Icon(Icons.person, color: ThemeColors.primary,)
-                ),
-            onPressed: () => {},
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0,Dimensions.marginStandard,0,0),
-            child: Text(person.name, style: TextStyle(color: ThemeColors.primaryDark),)
-          ),
-    ]
-    );
-  }
 
   Widget _infoCard(Person person) {
     return new Padding(
@@ -34,12 +14,13 @@ class MeetupsPage extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: Card(
+            color: ThemeColors.primary,
             child: Padding(
               padding: EdgeInsets.all(20),
               child: Text("Hi!  My name is Susie.  "
                   "I have been a member of Crosspoint for 5 years.  "
                   "I live in San Fran with my husband and two daughters.",
-                style: TextStyle(color: ThemeColors.primaryDark),)
+                style: TextStyle(color: Colors.white),)
             )
           )
         )
@@ -50,7 +31,7 @@ class MeetupsPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     const List<Person> people = <Person>[
-      Person(name: 'Hannah'),
+      Person(name: 'Susie'),
       Person(name: 'Jessica'),
       Person(name: 'Amir'),
       Person(name: 'Taylor')
@@ -69,7 +50,7 @@ class MeetupsPage extends StatelessWidget {
                 crossAxisCount: 1,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                children: people.map((person) => _circleImage(person)).toList(),
+                children: people.map((person) => PersonAvatar(person: person)).toList(),
             )
           )
           ),
