@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 
 class ThemeColors {
   static const primary = MaterialColor(0xFF71C9BF, _teal);
-  static const primaryDark = MaterialColor(0xFF71C9BF, _tealDark);
-  static const primaryLight = MaterialColor(0xFF71C9BF, _tealLight);
+  static const primaryDark = MaterialColor(0xFF18989B, _tealDark);
+  static const primaryLight = MaterialColor(0xFFDBF1EF, _tealLight);
   static const accent = Colors.amber;
 
   static const Map<int, Color> _teal = {
