@@ -20,12 +20,7 @@ class _MatchingPageState extends State<MatchingPage>
   AnimationController controller;
   Animation animation;
   Animation colorAnimation;
-
-// TODO: Integrate with api to get actual matches
-  static List<Person> matches = List();
-
-  String matchedText = "Meet your neighbours!";
-  String placeholderText = 'We are finding your neighbours! We will email you when your group is completed.';
+  static List<Person> matches;
 
   @override
   void initState() {
@@ -54,6 +49,10 @@ class _MatchingPageState extends State<MatchingPage>
 
     double screenWidth = MediaQuery.of(context).size.width;
     double lrMargin = screenWidth*.10;
+    String buttonText = matches != null ? 
+      'Meet Your Neighbors!' :
+      'We are finding your neighbours! We will email you when your group is completed.'
+      ;
 
     return Scaffold(
       backgroundColor: ThemeColors.primary,
@@ -99,16 +98,21 @@ class _MatchingPageState extends State<MatchingPage>
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                  child: hasMatches() ? Text('CURRENT MATCHES:', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center) : Container(),
+                  child: Text('CURRENT MATCHES:', 
+                    style: TextStyle(
+                      color: Colors.white, 
+                      fontWeight: FontWeight.bold
+                      ), 
+                    textAlign: TextAlign.center),
                 ),
                 SizedBox(
                   width: screenWidth - lrMargin*2,
-                  child: hasMatches() ? MatchesGrid(people:matches) : Container()
+                  child: MatchesGrid(people:matches)
                 ),
                 SizedBox(
                   child: CustomButton(
-                    label: hasMatches() ? matchedText : placeholderText,
-                    color: hasMatches() ? ThemeColors.accent : Colors.grey,
+                    label: buttonText,
+                    color: matches != null ? ThemeColors.accent : Colors.grey,
                     action: () {
                       // Navigator.pushNamed(context, );
                     },
