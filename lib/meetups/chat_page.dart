@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/meetups/chat_message.dart';
-import 'package:interconnect_mobile_app/meetups/chat_args.dart';
 
 /// Chat Feature based off https://github.com/flutter/friendlychat-steps
 

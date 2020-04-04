@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/entities/destination.dart';
-import 'package:interconnect_mobile_app/home/home_page.dart';
+import 'package:interconnect_mobile_app/meetups/matching_page.dart';
 import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
 import 'package:interconnect_mobile_app/profile/profile_page.dart';
 
@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   static const List<Destination> _pageOptions = <Destination>[
-    Destination(0, 'Home', Icons.home, Colors.brown, HomePage()),
+    Destination(0, 'Home', Icons.home, Colors.brown, MatchingPage()),
     Destination(1, 'Meetups', Icons.people, Colors.cyan, MeetupsPage()),
     Destination(2, 'Me', Icons.person, Colors.orange, ProfilePage()),
   ];
