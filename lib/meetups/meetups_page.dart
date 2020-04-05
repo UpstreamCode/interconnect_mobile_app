@@ -108,6 +108,9 @@ class MeetupsPageState extends State<MeetupsPage> {
                   );
                 },
               ),
+           Expanded(
+             child: ChatPage(),
+           ),
         ]
       )
     );
