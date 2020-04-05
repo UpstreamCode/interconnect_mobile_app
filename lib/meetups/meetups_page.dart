@@ -101,16 +101,6 @@ class MeetupsPageState extends State<MeetupsPage> {
 
            )
                ]),
-           CustomButton(
-                label: 'Meet Your Team!',
-                color: ThemeColors.accent,
-                action: () {
-                  Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) =>
-                      new IcebreakersPage())
-                  );
-                },
-              ),
            Expanded(
              child: ChatPage(),
            ),
