@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:interconnect_mobile_app/api/api.dart';
 import 'package:interconnect_mobile_app/components/custom_button.dart';
 import 'package:interconnect_mobile_app/components/custom_input.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
@@ -145,10 +146,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         });
 
                         try {
-                          final user =
+                          final result =
                               await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
-                          if (user != null) {
+                          if (result != null) {
+                            await Api.addUser(email, firstName, lastName, description, result.user.uid);
                             Navigator.pushNamed(context, MainPage.routeName);
                           }
                         } catch (e) {

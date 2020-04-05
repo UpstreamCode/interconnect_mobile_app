@@ -37,8 +37,8 @@ class Api {
         },
         body: body);
 
-    print("${response.statusCode}");
-    print("${response.body}");
+    print("addUser code ${response.statusCode}");
+    print("addUser body ${response.body}");
     return response;
   }
 
@@ -56,11 +56,8 @@ class Api {
         }
     );
 
-    // TODO: See if backend works
-    response = MockData.getMockMatchingData();
-
-    print("${response.statusCode}");
-    print("${response.body}");
+    print("getMatchGroup code ${response.statusCode}");
+    print("getMatchGroup body ${response.body}");
 
     List<Person> people;
     if (response.statusCode == 200) {
