@@ -45,7 +45,7 @@ class MeetupsPageState extends State<MeetupsPage> {
             color: ThemeColors.primary,
             child: Padding(
               padding: EdgeInsets.all(20),
-              child: Text("Hi!  My name is Susie.  "
+              child: Text("Hi!  My name is Jaya.  "
                   "I have been a member of Crosspoint for 5 years.  "
                   "I live in San Fran with my husband and two daughters.",
                 style: TextStyle(color: Colors.white),)
@@ -101,11 +101,8 @@ class MeetupsPageState extends State<MeetupsPage> {
 
            )
                ]),
-           Expanded(
-             child: ChatPage(),
-           ),
            CustomButton(
-                label: 'Click to get a match!',
+                label: 'Meet Your Team!',
                 color: ThemeColors.accent,
                 action: () {
                   Navigator.push(context, new MaterialPageRoute(

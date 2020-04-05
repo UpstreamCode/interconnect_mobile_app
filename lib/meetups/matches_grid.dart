@@ -13,11 +13,11 @@ class MatchesGrid extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       primary: false,
-      padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
+      padding: const EdgeInsets.fromLTRB(50, 15, 50, 0),
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
       // Let the ListView know how many items it needs to build.
-      itemCount: people.length,
+      itemCount: people != null ? people.length : 0,
       // Provide a builder function. This is where the magic happens.
       // Convert each item into a widget based on the type of item it is.
       itemBuilder: (context, index) {

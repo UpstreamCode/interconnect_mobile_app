@@ -54,16 +54,16 @@ class _ProfilePageState extends State<ProfilePage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 4.0),
               child: ListTile(
-              title: Text('John Doe', style: TextStyle(color: ThemeColors.primaryDark, fontWeight: FontWeight.bold)),
-              subtitle: Text('San Francisco, CA', style: TextStyle(color: ThemeColors.primary)),
+              title: Text('Jaya Brown', style: TextStyle(color: ThemeColors.primaryDark, fontWeight: FontWeight.bold)),
+              subtitle: Text('Toronto, ON', style: TextStyle(color: ThemeColors.primary)),
               )
             ),
             Card(
               margin: EdgeInsets.fromLTRB(20,0,20,0),
               child: Padding(
                 padding: EdgeInsets.all(20.0),
-                child: Text("Hi!  My name is John.  I have been a member of Crosspoint for 5 years.  "
-                  "I live in San Fran with my wife and two daughters.",
+                child: Text("Hi!  My name is Jaya.  I have been a member of Crosspoint for 5 years.  "
+                  "I live in Toronto with my husband and two daughters.",
                 style: TextStyle(color: ThemeColors.primary)
                 ),
               ),
@@ -83,7 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: EdgeInsets.symmetric(horizontal: 4.0),
               child: ListTile(
               leading: Icon( Icons.email, color: ThemeColors.primary,),
-              title: Text('Email: johndoe@email.com', style: TextStyle(color: ThemeColors.primary),),
+              title: Text('Email: jayabrown@yahoo.com', style: TextStyle(color: ThemeColors.primary),),
             )
             ),
             //   ListTile(

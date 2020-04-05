@@ -45,7 +45,7 @@ class _MatchingPageState extends State<MatchingPage>{
   Widget build(BuildContext context) {
 
     double screenWidth = MediaQuery.of(context).size.width;
-    double lrMargin = screenWidth*.10;
+    double lrMargin = screenWidth*.05;
     String buttonText = matches != null ? 
       'Meet Your Neighbors!' :
       'We are finding your neighbours! We will email you when your group is completed.'
@@ -80,9 +80,7 @@ class _MatchingPageState extends State<MatchingPage>{
                 textAlign: TextAlign.center,
               ),
               subtitle: Text(
-                'We are Crosspoint Church in San Fransisco. ' + 
-                'We want to see our community and the world know Jesus ' +
-                'and the peace He brings.', 
+                'We are Crosspoint Church in Toronto and want to see our community and the world know Jesus',
                 style: TextStyle(color: Colors.white)
               ),
             ),
