@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:interconnect_mobile_app/api/api.dart';
-import 'package:interconnect_mobile_app/constants/dimensions.dart';
+import 'package:interconnect_mobile_app/components/custom_button.dart';
 import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
 import 'package:interconnect_mobile_app/entities/user.dart';
-import 'package:interconnect_mobile_app/meetups/chat_args.dart';
 import 'package:interconnect_mobile_app/meetups/chat_page.dart';
+import 'package:interconnect_mobile_app/meetups/icebreakers_page.dart';
 import 'package:interconnect_mobile_app/meetups/person_avatar.dart';
 
 class MeetupsPage extends StatefulWidget {
@@ -87,7 +87,12 @@ class MeetupsPageState extends State<MeetupsPage> {
                  padding: EdgeInsets.symmetric(horizontal: 24.0),
                    child: RaisedButton(
                      color: Colors.white,
-                     onPressed: () => { },
+                     onPressed: () => {
+                       Navigator.push(context, new MaterialPageRoute(
+                        builder: (context) =>
+                          new IcebreakersPage())
+                        )
+                  },
                      child: Padding(
                          padding: EdgeInsets.all(12.0),
                          child: Text("See prompts", style: TextStyle(color: ThemeColors.primary),)
@@ -98,7 +103,20 @@ class MeetupsPageState extends State<MeetupsPage> {
                ]),
            Expanded(
              child: ChatPage(),
-           )
+           ),
+           CustomButton(
+                label: 'Click to get a match!',
+                color: ThemeColors.accent,
+                action: () {
+                  Navigator.push(context, new MaterialPageRoute(
+                    builder: (context) =>
+                      new IcebreakersPage())
+                  );
+                },
+              ),
+           Expanded(
+             child: ChatPage(),
+           ),
         ]
       )
     );
