@@ -86,7 +86,12 @@ class MeetupsPageState extends State<MeetupsPage> {
                  padding: EdgeInsets.symmetric(horizontal: 24.0),
                    child: RaisedButton(
                      color: Colors.white,
-                     onPressed: () => { },
+                     onPressed: () => {
+                       Navigator.push(context, new MaterialPageRoute(
+                        builder: (context) =>
+                          new IcebreakersPage())
+                        )
+                  },
                      child: Padding(
                          padding: EdgeInsets.all(12.0),
                          child: Text("See prompts", style: TextStyle(color: ThemeColors.primary),)
