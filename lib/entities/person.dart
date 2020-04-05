@@ -4,7 +4,6 @@ class Person {
   final String description;
   final String church;
   final String uid;
-  final List<Contact> contactInfo;
   String image;
 
   Person({
@@ -13,13 +12,10 @@ class Person {
     this.description,
     this.church,
     this.uid,
-    this.contactInfo,
     this.image,
   });
 
   factory Person.fromJSON(Map<String, dynamic> json) {
-    var contactsJson = json['contact'] as List;
-
     return Person(
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
@@ -27,7 +23,6 @@ class Person {
       description: json['description'] as String,
       church: json['church'] as String,
       uid: json['uid'] as String,
-      contactInfo: contactsJson.map((json) => Contact.fromJSON(json)).toList()
     );
   }
 }
