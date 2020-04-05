@@ -104,19 +104,6 @@ class MeetupsPageState extends State<MeetupsPage> {
            Expanded(
              child: ChatPage(),
            ),
-           CustomButton(
-                label: 'Click to get a match!',
-                color: ThemeColors.accent,
-                action: () {
-                  Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) =>
-                      new IcebreakersPage())
-                  );
-                },
-              ),
-           Expanded(
-             child: ChatPage(),
-           ),
         ]
       )
     );

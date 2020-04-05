@@ -17,15 +17,15 @@ class MatchesGrid extends StatelessWidget {
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
       // Let the ListView know how many items it needs to build.
-      itemCount: people.length,
+      itemCount: 4,
       // Provide a builder function. This is where the magic happens.
       // Convert each item into a widget based on the type of item it is.
       itemBuilder: (context, index) {
-        final person = people[index];
+        final person = people!=null ? people[index] : null;
         return Avatar(
             width: 100,
             height: 100,
-            image: person.image
+            image: person!=null ? person.image : null
         );
       },
     );
