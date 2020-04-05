@@ -6,6 +6,7 @@ import 'package:interconnect_mobile_app/constants/theme_colors.dart';
 import 'package:interconnect_mobile_app/entities/person.dart';
 import 'package:interconnect_mobile_app/entities/user.dart';
 import 'package:interconnect_mobile_app/meetups/matches_grid.dart';
+import 'package:interconnect_mobile_app/meetups/meetups_page.dart';
 
 class MatchingPage extends StatefulWidget {
   const MatchingPage({ Key key}) : super(key: key);
@@ -15,17 +16,8 @@ class MatchingPage extends StatefulWidget {
   static const routeName = 'matching';
 }
 
-class _MatchingPageState extends State<MatchingPage>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation animation;
-  Animation colorAnimation;
-
-// TODO: Integrate with api to get actual matches
-  static List<Person> matches = List();
-
-  String matchedText = "Meet your neighbours!";
-  String placeholderText = 'We are finding your neighbours! We will email you when your group is completed.';
+class _MatchingPageState extends State<MatchingPage>{
+  static List<Person> matches;
 
   @override
   void initState() {
@@ -54,6 +46,10 @@ class _MatchingPageState extends State<MatchingPage>
 
     double screenWidth = MediaQuery.of(context).size.width;
     double lrMargin = screenWidth*.10;
+    String buttonText = matches != null ? 
+      'Meet Your Neighbors!' :
+      'We are finding your neighbours! We will email you when your group is completed.'
+      ;
 
     return Scaffold(
       backgroundColor: ThemeColors.primary,
@@ -99,18 +95,24 @@ class _MatchingPageState extends State<MatchingPage>
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                  child: hasMatches() ? Text('CURRENT MATCHES:', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center) : Container(),
+                  child: Text('CURRENT MATCHES:', 
+                    style: TextStyle(
+                      color: Colors.white, 
+                      fontWeight: FontWeight.bold
+                      ), 
+                    textAlign: TextAlign.center),
                 ),
                 SizedBox(
                   width: screenWidth - lrMargin*2,
-                  child: hasMatches() ? MatchesGrid(people:matches) : Container()
+                  child: MatchesGrid(people:matches)
                 ),
                 SizedBox(
                   child: CustomButton(
-                    label: hasMatches() ? matchedText : placeholderText,
-                    color: hasMatches() ? ThemeColors.accent : Colors.grey,
+                    label: buttonText,
+                    color: matches != null ? ThemeColors.accent : Colors.grey,
                     action: () {
-                      // Navigator.pushNamed(context, );
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context) => new MeetupsPage()));
                     },
                   ),
                 ),
