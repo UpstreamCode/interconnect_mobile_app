@@ -79,6 +79,22 @@ class MeetupsPageState extends State<MeetupsPage> {
           )
           ),
           _infoCard(selectedPerson),
+
+           Row(
+               children: <Widget> [
+                 Padding(
+                 padding: EdgeInsets.symmetric(horizontal: 24.0),
+                   child: RaisedButton(
+                     color: Colors.white,
+                     onPressed: () => { },
+                     child: Padding(
+                         padding: EdgeInsets.all(12.0),
+                         child: Text("See prompts", style: TextStyle(color: ThemeColors.primary),)
+                     ),
+                   )
+
+           )
+               ]),
            Expanded(
              child: ChatPage(),
            )
